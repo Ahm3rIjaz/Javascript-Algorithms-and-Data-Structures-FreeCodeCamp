@@ -7,12 +7,12 @@
 // All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass them on.
 
 const rot13 = (str) => {
-  str = str.split('')
-  const decrypted = str.map(chr => chr.charCodeAt(0) >= 65 && chr.charCodeAt(0) <= 90
-    ? String.fromCharCode(65 + ((chr.charCodeAt(0) + 13 - 65) % 26))
-    : chr
-  )
-  return decrypted.join('')
+  return str
+    .split('')
+    .map(char => char.match(/[A-Z]/g)
+      ? String.fromCharCode(65 + ((char.charCodeAt(0) + 13 - 65) % 26))
+      : char
+  ).join('')
 }
 
 rot13("SERR PBQR PNZC") //should decode to the string FREE CODE CAMP
